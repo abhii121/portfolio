@@ -156,7 +156,27 @@ p, li {
     background: rgba(30, 40, 50, 0.6);
     transform: translateY(-6px);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
-    border-left-color: #00aaff; 
+    border-left-color: #00aaff;
+}
+
+.project-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.project-link-cta {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #4ce0b3;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.project-card-link:hover .project-link-cta {
+    color: #fff;
+    text-shadow: 0 0 10px #4ce0b3;
 }
 
 .duration {
