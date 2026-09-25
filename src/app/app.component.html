@@ -22,6 +22,19 @@
     </div>
   </header>
 
+  <!-- Skills marquee -->
+  <section class="skill-marquee" aria-label="Skills">
+    @for (row of marquee; track $index) {
+      <div class="marquee-row">
+        <div class="marquee-track" [class.reverse]="row.reverse">
+          @for (s of row.loop; track $index; let i = $index) {
+            <span class="skill-chip" [class]="'skill-chip ' + s.cat" [class.dup]="i >= row.skills.length" [attr.aria-hidden]="i >= row.skills.length ? 'true' : null">{{ s.name }}</span>
+          }
+        </div>
+      </div>
+    }
+  </section>
+
   <!-- About -->
   <section class="about depth">
     <h2>About Me</h2>
@@ -37,10 +50,11 @@
   <section class="skills depth">
     <h2>Technical Expertise</h2>
     <div class="skill-grid">
-      <div class="skill-card tilt"><h3>Frontend</h3><p>Angular, React, HTML, CSS, TypeScript</p></div>
-      <div class="skill-card tilt"><h3>Backend</h3><p>.NET Core, REST APIs, Node.js</p></div>
-      <div class="skill-card tilt"><h3>Database & Cloud</h3><p>MSSQL, PostgreSQL, Docker, AWS</p></div>
-      <div class="skill-card tilt"><h3>Tools & Others</h3><p>GitLab, Bitbucket, Photoshop, Figma</p></div>
+      <div class="skill-card tilt"><h3>Frontend</h3><p>Angular (v11 to v20), TypeScript, JavaScript, RxJS, Signals, React, HTML5, CSS3/SCSS, Bootstrap, DevExtreme</p></div>
+      <div class="skill-card tilt"><h3>Backend</h3><p>C#, .NET Core, ASP.NET Core Web API, Entity Framework Core, LINQ, REST APIs, Microservices, JWT, Node.js</p></div>
+      <div class="skill-card tilt"><h3>Database & Cloud</h3><p>MSSQL, T-SQL, Stored Procedures, PostgreSQL, Docker, CI/CD, AWS</p></div>
+      <div class="skill-card tilt"><h3>Tools & Others</h3><p>Git, GitLab, Bitbucket, SharePoint, Agile, Figma, Photoshop</p></div>
+      <div class="skill-card tilt"><h3>AI-Assisted Dev</h3><p>Claude, GitHub Copilot, Gemini Code Assist, ChatGPT, Prompt Engineering</p></div>
     </div>
   </section>
 

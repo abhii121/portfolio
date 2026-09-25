@@ -10,6 +10,8 @@ interface Project {
   link?: string;
 }
 
+interface Skill { name: string; cat: 'fe' | 'be' | 'db' | 'ops' | 'ai'; }
+
 const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
 
 @Component({
@@ -67,6 +69,26 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       ],
       link: 'https://github.com/abhii121/Expense-Tracker-project'
     }
+  ];
+
+  private readonly skillRow1: Skill[] = [
+    { name: 'Angular', cat: 'fe' }, { name: 'TypeScript', cat: 'fe' }, { name: 'RxJS', cat: 'fe' },
+    { name: 'Signals', cat: 'fe' }, { name: 'JavaScript', cat: 'fe' }, { name: 'React', cat: 'fe' },
+    { name: 'HTML5', cat: 'fe' }, { name: 'CSS3 / SCSS', cat: 'fe' }, { name: 'Bootstrap', cat: 'fe' },
+    { name: 'DevExtreme', cat: 'fe' }, { name: 'Chart.js', cat: 'fe' }, { name: 'C#', cat: 'be' },
+    { name: '.NET Core', cat: 'be' }, { name: 'ASP.NET Core Web API', cat: 'be' }
+  ];
+  private readonly skillRow2: Skill[] = [
+    { name: 'Entity Framework Core', cat: 'be' }, { name: 'LINQ', cat: 'be' }, { name: 'REST APIs', cat: 'be' },
+    { name: 'Microservices', cat: 'be' }, { name: 'JWT Auth', cat: 'be' }, { name: 'SQL Server', cat: 'db' },
+    { name: 'T-SQL', cat: 'db' }, { name: 'PostgreSQL', cat: 'db' }, { name: 'Docker', cat: 'ops' },
+    { name: 'CI/CD', cat: 'ops' }, { name: 'AWS', cat: 'ops' }, { name: 'Git', cat: 'ops' },
+    { name: 'SharePoint', cat: 'ops' }, { name: 'Claude', cat: 'ai' }, { name: 'GitHub Copilot', cat: 'ai' },
+    { name: 'Gemini Code Assist', cat: 'ai' }
+  ];
+  readonly marquee = [
+    { skills: this.skillRow1, loop: [...this.skillRow1, ...this.skillRow1], reverse: false },
+    { skills: this.skillRow2, loop: [...this.skillRow2, ...this.skillRow2], reverse: true }
   ];
 
   readonly activeProject = signal(0);

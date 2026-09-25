@@ -192,7 +192,7 @@ p, li {
 /* Skills */
 .skill-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
 }
 
@@ -500,6 +500,70 @@ p, li {
     display: none;
 }
 
+/* Skills marquee */
+.skill-marquee {
+    margin: -2rem 0 3rem;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-row {
+    overflow: hidden;
+}
+
+.marquee-track {
+    display: flex;
+    gap: 0.8rem;
+    width: max-content;
+    animation: marquee 45s linear infinite;
+}
+
+.marquee-track.reverse {
+    animation-direction: reverse;
+    animation-duration: 52s;
+}
+
+.marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.skill-chip {
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    color: #4ce0b3;
+    background: rgba(76, 224, 179, 0.08);
+    border: 1px solid rgba(76, 224, 179, 0.3);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.skill-chip:hover {
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.skill-chip.be, .skill-chip.db {
+    color: #7fd0ff;
+    background: rgba(0, 170, 255, 0.08);
+    border-color: rgba(0, 170, 255, 0.35);
+}
+
+.skill-chip.ops, .skill-chip.ai {
+    color: #e2a8ff;
+    background: rgba(212, 118, 255, 0.08);
+    border-color: rgba(212, 118, 255, 0.35);
+}
+
+@keyframes marquee {
+    to { transform: translateX(-50%); }
+}
+
 /* Education / footer */
 .education p strong {
     color: #f0f0f0;
@@ -547,6 +611,9 @@ footer {
 
 /* Reduced motion: no 3D, no floating, plain content */
 @media (prefers-reduced-motion: reduce) {
+    .skill-marquee { -webkit-mask-image: none; mask-image: none; margin-top: 0; }
+    .marquee-track { width: auto; flex-wrap: wrap; justify-content: center; animation: none; }
+    .skill-chip.dup { display: none; }
     .projects-3d { display: none; }
     .projects-fallback { display: block; }
     .hero-badges, .grid-floor { display: none; }
