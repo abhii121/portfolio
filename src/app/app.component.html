@@ -1,20 +1,29 @@
 <div class="portfolio-wrapper">
-  <!-- Mouse glow circle -->
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <div class="grid-floor" aria-hidden="true"></div>
   <div class="cursor-glow"></div>
 
   <!-- Header -->
   <header class="hero-section">
+    <div class="hero-badges" aria-hidden="true">
+      <span class="hb" style="--l: 6%; --t: 14%; --d: 34"><span>Angular</span></span>
+      <span class="hb" style="--l: 84%; --t: 10%; --d: -28"><span>.NET Core</span></span>
+      <span class="hb" style="--l: 2%; --t: 66%; --d: -18"><span>TypeScript</span></span>
+      <span class="hb" style="--l: 88%; --t: 60%; --d: 22"><span>SQL Server</span></span>
+      <span class="hb" style="--l: 8%; --t: 88%; --d: 30"><span>Docker</span></span>
+      <span class="hb" style="--l: 82%; --t: 90%; --d: -24"><span>C#</span></span>
+    </div>
     <h1>Abishek Soman</h1>
     <h2>Software Engineer | Angular & .NET Developer</h2>
     <div class="contact">
       <a href="mailto:abishek000as&#64;gmail.com">📧 abishek000as&#64;gmail.com</a>
       <a href="tel:+919744514796">📞 +91 97445 14796</a>
-      <a href="https://www.linkedin.com/in/abishek-soman" target="_blank">🔗 LinkedIn</a>
+      <a href="https://www.linkedin.com/in/abishek-soman" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
     </div>
   </header>
 
   <!-- About -->
-  <section class="about fade-in">
+  <section class="about depth">
     <h2>About Me</h2>
     <p>
       Passionate software engineer focused on creating seamless digital experiences.
@@ -25,128 +34,161 @@
   </section>
 
   <!-- Skills -->
-  <section class="skills fade-in">
+  <section class="skills depth">
     <h2>Technical Expertise</h2>
     <div class="skill-grid">
-      <div class="skill-card"><h3>Frontend</h3><p>Angular, React, HTML, CSS, TypeScript</p></div>
-      <div class="skill-card"><h3>Backend</h3><p>.NET Core, REST APIs, Node.js</p></div>
-      <div class="skill-card"><h3>Database & Cloud</h3><p>MSSQL, PostgreSQL, Docker, AWS</p></div>
-      <div class="skill-card"><h3>Tools & Others</h3><p>GitLab, Bitbucket, Photoshop, Figma</p></div>
+      <div class="skill-card tilt"><h3>Frontend</h3><p>Angular, React, HTML, CSS, TypeScript</p></div>
+      <div class="skill-card tilt"><h3>Backend</h3><p>.NET Core, REST APIs, Node.js</p></div>
+      <div class="skill-card tilt"><h3>Database & Cloud</h3><p>MSSQL, PostgreSQL, Docker, AWS</p></div>
+      <div class="skill-card tilt"><h3>Tools & Others</h3><p>GitLab, Bitbucket, Photoshop, Figma</p></div>
     </div>
   </section>
 
   <!-- Experience -->
- <section class="experience fade-in">
-  <h2>Experience</h2>
+  <section class="experience depth">
+    <h2>Experience</h2>
 
-  <div class="exp-card">
-    <h3>Datalyzer International — Software Engineer</h3>
-    <p class="duration">Jul 2022 – Present | Bengaluru</p>
-    <ul>
-      <li>Designed and developed scalable web applications using <strong>Angular & .NET Core</strong>.</li>
-      <li>Built dynamic enterprise dashboards featuring <strong>real-time data visualization & analytics</strong>.</li>
-      <li>Integrated <strong>SharePoint</strong> for secure document handling within workflows.</li>
-      <li>Created <strong>Excel-style interactive UI components</strong> for efficient data entry, editing & validation.</li>
-      <li>Developed <strong>RESTful APIs</strong> to support frontend modules, ensuring smooth data flow.</li>
-      <li>Improved backend modularity using <strong>abstract classes & interfaces</strong> for reusable architectures.</li>
-      <li>Implemented <strong>Docker-based microservices</strong> for reliable deployments & improved scalability.</li>
-      <li>Enhanced application performance through <strong>frontend optimization & lazy loading</strong>.</li>
-      <li>Collaborated closely with QA/Backend teams for <strong>performance tuning & debugging</strong>.</li>
-      <li>Applied <strong>Agile methodologies</strong> across sprint cycles, contributing to planning & delivery.</li>
-      <li>Worked with <strong>MSSQL & PostgreSQL</strong> for DB design, querying & stored procedures.</li>
-    </ul>
-  </div>
-
-</section>
-
-  <!-- Projects -->
-<section class="projects fade-in">
-  <h2>Projects</h2>
-
-  <!-- Project 1 -->
-  <div class="project-card">
-    <h3>APQP Portal – Workflow Automation System</h3>
-    <p>
-      A full-stack application designed to streamline Advanced Product Quality Planning workflows across teams.
-    </p>
-    <ul>
-      <li>Developed workflow automation modules using <strong>Angular v20</strong> with dynamic routing & reactive state mgmt.</li>
-      <li>Implemented <strong>real-time updates</strong> and interactive interfaces to monitor product quality & approval stages.</li>
-      <li>Built scalable <strong>.NET Core microservices</strong> along with REST APIs enabling seamless communication.</li>
-      <li>Integrated <strong>SharePoint</strong> for secure document access and storage within APQP workflows.</li>
-      <li>Containerized services via <strong>Docker</strong> ensuring faster deployments & consistent environments.</li>
-      <li>Designed maintainable architecture using <strong>abstract classes + interfaces</strong> across modules.</li>
-      <li>Optimized backend for improved communication & modularity with MSSQL + microservice patterns.</li>
-    </ul>
-  </div>
-
-  <!-- Project 2 -->
-  <div class="project-card">
-    <h3>MSA – Measurement System Analysis</h3>
-    <p>
-      Interactive manufacturing dashboard built to help teams manage quality insights & decision-making.
-    </p>
-    <ul>
-      <li>Key role in implementing large-scale UI in <strong>Angular 11</strong> with responsive layouts.</li>
-      <li>Developed <strong>interactive data-driven UI components</strong> to visualize trends & KPIs.</li>
-      <li>Implemented real-time validation and <strong>Excel-like data handling</strong> for efficient data entry & editing.</li>
-      <li>Integrated SharePoint at UI level for document access, upload & automated workflows.</li>
-      <li>Improved performance through <strong>component optimization</strong> & lazy loading strategies.</li>
-      <li>Worked with backend + QA teams for end-to-end performance tuning.</li>
-    </ul>
-  </div>
-
-  <!-- Project 3 -->
-  <a
-    class="project-card project-card-link"
-    href="https://github.com/abhii121/Expense-Tracker-project"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <h3>Expense Tracker – Personal Finance Dashboard</h3>
-    <p>
-      A full-stack personal project for tracking income, expenses, and monthly budgets, built end-to-end
-      to demonstrate the full stack outside of work projects.
-    </p>
-    <div class="project-screenshots">
-      <img src="expense-tracker/dashboard.png" alt="Expense Tracker dashboard with income/expense summary and charts" loading="lazy" />
-      <img src="expense-tracker/transactions.png" alt="Expense Tracker transactions list with filters" loading="lazy" />
-      <img src="expense-tracker/budgets.png" alt="Expense Tracker monthly budgets with progress bars" loading="lazy" />
+    <div class="exp-card tilt">
+      <h3>Datalyzer International — Software Engineer</h3>
+      <p class="duration">Jul 2022 – Present | Bengaluru</p>
+      <ul>
+        <li>Designed and developed scalable web applications using <strong>Angular & .NET Core</strong>.</li>
+        <li>Built dynamic enterprise dashboards featuring <strong>real-time data visualization & analytics</strong>.</li>
+        <li>Integrated <strong>SharePoint</strong> for secure document handling within workflows.</li>
+        <li>Created <strong>Excel-style interactive UI components</strong> for efficient data entry, editing & validation.</li>
+        <li>Developed <strong>RESTful APIs</strong> to support frontend modules, ensuring smooth data flow.</li>
+        <li>Improved backend modularity using <strong>abstract classes & interfaces</strong> for reusable architectures.</li>
+        <li>Implemented <strong>Docker-based microservices</strong> for reliable deployments & improved scalability.</li>
+        <li>Enhanced application performance through <strong>frontend optimization & lazy loading</strong>.</li>
+        <li>Collaborated closely with QA/Backend teams for <strong>performance tuning & debugging</strong>.</li>
+        <li>Applied <strong>Agile methodologies</strong> across sprint cycles, contributing to planning & delivery.</li>
+        <li>Worked with <strong>MSSQL & PostgreSQL</strong> for DB design, querying & stored procedures.</li>
+      </ul>
     </div>
-    <ul>
-      <li>Built the frontend in <strong>Angular 19</strong> using standalone components and signals.</li>
-      <li>Developed a <strong>.NET Core 10 REST API</strong> with JWT authentication and EF Core over SQL Server.</li>
-      <li>Implemented CSV import, per-category monthly budgets, and a dashboard with trend & breakdown charts.</li>
-      <li>Containerized with <strong>Docker</strong> and documented for one-command local setup.</li>
-    </ul>
-    <span class="project-link-cta">View on GitHub →</span>
-  </a>
-</section>
+  </section>
 
+  <!-- Projects: 3D ring (scroll-driven) -->
+  <section class="projects">
+    <div class="projects-3d">
+      <div class="projects-track">
+        <div class="projects-sticky">
+          <h2>Projects</h2>
+
+          <div class="ring-stage">
+            <div class="ring-world">
+              @for (p of projects; track p.name; let i = $index) {
+                <article
+                  class="ring-card"
+                  [class.active]="i === activeProject()"
+                  role="button"
+                  tabindex="0"
+                  [attr.aria-label]="'Show ' + p.name"
+                  (click)="goToProject(i)"
+                  (keydown.enter)="goToProject(i)"
+                >
+                  <div class="ring-media">
+                    @if (p.images) {
+                      <img [src]="p.images[0].src" [alt]="p.images[0].alt" />
+                    } @else {
+                      <span class="ring-glyph">{{ p.glyph }}</span>
+                    }
+                  </div>
+                  <h3>{{ p.name }}</h3>
+                  <p class="ring-tag">{{ p.tagline }}</p>
+                  <div class="chips">
+                    @for (t of p.tech.slice(0, 4); track t) {
+                      <span>{{ t }}</span>
+                    }
+                  </div>
+                </article>
+              }
+            </div>
+          </div>
+
+          <div class="ring-dots">
+            @for (p of projects; track p.name; let i = $index) {
+              <button
+                type="button"
+                [class.on]="i === activeProject()"
+                [attr.aria-label]="'Go to ' + p.name"
+                (click)="goToProject(i)"
+              ></button>
+            }
+          </div>
+
+          @for (p of current(); track p.name) {
+            <div class="ring-details">
+              <h3>{{ p.name }}</h3>
+              <ul>
+                @for (b of p.bullets; track b) {
+                  <li [innerHTML]="b"></li>
+                }
+              </ul>
+              @if (p.images) {
+                <div class="project-screenshots">
+                  @for (img of p.images; track img.src) {
+                    <img [src]="img.src" [alt]="img.alt" loading="lazy" />
+                  }
+                </div>
+              }
+              @if (p.link) {
+                <a class="project-link-cta" [href]="p.link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Fallback for phones / reduced motion -->
+    <div class="projects-fallback">
+      <h2>Projects</h2>
+      @for (p of projects; track p.name) {
+        <div class="project-card">
+          <h3>{{ p.name }}</h3>
+          <p>{{ p.tagline }}</p>
+          @if (p.images) {
+            <div class="project-screenshots">
+              @for (img of p.images; track img.src) {
+                <img [src]="img.src" [alt]="img.alt" loading="lazy" />
+              }
+            </div>
+          }
+          <ul>
+            @for (b of p.bullets; track b) {
+              <li [innerHTML]="b"></li>
+            }
+          </ul>
+          @if (p.link) {
+            <a class="project-link-cta" [href]="p.link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+          }
+        </div>
+      }
+    </div>
+  </section>
 
   <!-- Education -->
- <section class="education fade-in">
-  <h2>Education</h2>
+  <section class="education depth">
+    <h2>Education</h2>
 
-  <div class="edu-item">
-    <p><strong>Bachelor of Computer Applications (Computer Application)</strong></p>
-    <p>April 2019 - April 2022</p>
-    <p>Bharathiar University, Coimbatore, India</p>
-  </div>
+    <div class="edu-item">
+      <p><strong>Bachelor of Computer Applications (Computer Application)</strong></p>
+      <p>April 2019 - April 2022</p>
+      <p>Bharathiar University, Coimbatore, India</p>
+    </div>
 
-  <div class="edu-item">
-    <p><strong>Higher Secondary (12th)</strong></p>
-    <p>March 2017</p>
-    <p>NSS VHSS, Mundathicode, Thrissur</p>
-  </div>
+    <div class="edu-item">
+      <p><strong>Higher Secondary (12th)</strong></p>
+      <p>March 2017</p>
+      <p>NSS VHSS, Mundathicode, Thrissur</p>
+    </div>
 
-  <div class="edu-item">
-    <p><strong>High School (10th)</strong></p>
-    <p>March 2015</p>
-    <p>J.M.J. English Medium Higher Secondary School, Thrissur</p>
-  </div>
-</section>
-
+    <div class="edu-item">
+      <p><strong>High School (10th)</strong></p>
+      <p>March 2015</p>
+      <p>J.M.J. English Medium Higher Secondary School, Thrissur</p>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer>
