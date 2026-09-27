@@ -621,3 +621,14 @@ footer {
     .hero-section h1 { transform: none; }
     .hb > span { animation: none; }
 }
+
+.project-link-cta.live {
+    margin-right: 1.2rem;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid #4ce0b3;
+    border-radius: 999px;
+}
+
+.project-link-cta.live:hover {
+    background: rgba(76, 224, 179, 0.15);
+}

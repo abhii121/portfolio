@@ -145,6 +145,9 @@
                   }
                 </div>
               }
+              @if (p.liveLink) {
+                <a class="project-link-cta live" [href]="p.liveLink" target="_blank" rel="noopener noreferrer">▶ Play live</a>
+              }
               @if (p.link) {
                 <a class="project-link-cta" [href]="p.link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
               }
@@ -173,6 +176,9 @@
               <li [innerHTML]="b"></li>
             }
           </ul>
+          @if (p.liveLink) {
+            <a class="project-link-cta live" [href]="p.liveLink" target="_blank" rel="noopener noreferrer">▶ Play live</a>
+          }
           @if (p.link) {
             <a class="project-link-cta" [href]="p.link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
           }

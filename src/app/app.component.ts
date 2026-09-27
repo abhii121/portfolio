@@ -8,6 +8,7 @@ interface Project {
   bullets: string[];
   images?: { src: string; alt: string }[];
   link?: string;
+  liveLink?: string;
 }
 
 interface Skill { name: string; cat: 'fe' | 'be' | 'db' | 'ops' | 'ai'; }
@@ -68,6 +69,21 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         { src: 'expense-tracker/budgets.png', alt: 'Expense Tracker monthly budgets with progress bars' }
       ],
       link: 'https://github.com/abhii121/Expense-Tracker-project'
+    },
+    {
+      name: 'Space Slipstream',
+      glyph: '🚀',
+      tagline: 'Zero-gravity 2D racing game, playable in the browser',
+      tech: ['Angular 20', 'PixiJS 8', 'TypeScript', 'Web Audio', 'Netlify'],
+      bullets: [
+        'Built a real-time racing game with <strong>Angular 20 (zoneless)</strong> and a <strong>PixiJS 8</strong> WebGL renderer.',
+        'Race three AI pilots through an asteroid field, using <strong>planetary gravity to slingshot</strong> around the bends.',
+        'Custom physics and AI engine in plain TypeScript, bridged to the UI with <strong>Angular signals</strong>.',
+        'Keyboard, <strong>gamepad (with rumble)</strong> and touch controls, plus procedural <strong>Web Audio</strong> sound effects.',
+        'Deployed on <strong>Netlify</strong>.'
+      ],
+      link: 'https://github.com/abhii121/space-slipstream',
+      liveLink: 'https://spaceslipstream.netlify.app'
     }
   ];
 
