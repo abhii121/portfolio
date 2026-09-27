@@ -633,12 +633,3 @@ footer {
     background: rgba(76, 224, 179, 0.15);
 }
 
-/* Personal projects */
-.personal-card .ring-tag {
-    margin: 0.2rem 0 0.7rem;
-    font-size: 0.95rem;
-}
-
-.personal-card .chips {
-    margin-bottom: 1rem;
-}

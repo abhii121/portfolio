@@ -81,145 +81,113 @@
     </div>
   </section>
 
-  <!-- Projects: 3D ring (scroll-driven) -->
-  <section class="projects">
-    <div class="projects-3d">
-      <div class="projects-track">
-        <div class="projects-sticky">
-          <h2>Projects</h2>
+  <!-- Projects: 3D rings (scroll-driven), one per group -->
+  @for (ring of rings; track ring.title; let r = $index) {
+    <section class="projects">
+      <div class="projects-3d">
+        <div class="projects-track" [style.height.vh]="60 + ring.items.length * 70">
+          <div class="projects-sticky">
+            <h2>{{ ring.title }}</h2>
 
-          <div class="ring-stage">
-            <div class="ring-world">
-              @for (p of projects; track p.name; let i = $index) {
-                <article
-                  class="ring-card"
-                  [class.active]="i === activeProject()"
-                  role="button"
-                  tabindex="0"
-                  [attr.aria-label]="'Show ' + p.name"
-                  (click)="goToProject(i)"
-                  (keydown.enter)="goToProject(i)"
-                >
-                  <div class="ring-media">
-                    @if (p.images) {
-                      <img [src]="p.images[0].src" [alt]="p.images[0].alt" />
-                    } @else {
-                      <span class="ring-glyph">{{ p.glyph }}</span>
-                    }
-                  </div>
-                  <h3>{{ p.name }}</h3>
-                  <p class="ring-tag">{{ p.tagline }}</p>
-                  <div class="chips">
-                    @for (t of p.tech.slice(0, 4); track t) {
-                      <span>{{ t }}</span>
-                    }
-                  </div>
-                </article>
-              }
-            </div>
-          </div>
-
-          <div class="ring-dots">
-            @for (p of projects; track p.name; let i = $index) {
-              <button
-                type="button"
-                [class.on]="i === activeProject()"
-                [attr.aria-label]="'Go to ' + p.name"
-                (click)="goToProject(i)"
-              ></button>
-            }
-          </div>
-
-          @for (p of current(); track p.name) {
-            <div class="ring-details">
-              <h3>{{ p.name }}</h3>
-              <ul>
-                @for (b of p.bullets; track b) {
-                  <li [innerHTML]="b"></li>
+            <div class="ring-stage">
+              <div class="ring-world">
+                @for (p of ring.items; track p.name; let i = $index) {
+                  <article
+                    class="ring-card"
+                    [class.active]="i === ring.active()"
+                    role="button"
+                    tabindex="0"
+                    [attr.aria-label]="'Show ' + p.name"
+                    (click)="goToProject(r, i)"
+                    (keydown.enter)="goToProject(r, i)"
+                  >
+                    <div class="ring-media">
+                      @if (p.images) {
+                        <img [src]="p.images[0].src" [alt]="p.images[0].alt" />
+                      } @else {
+                        <span class="ring-glyph">{{ p.glyph }}</span>
+                      }
+                    </div>
+                    <h3>{{ p.name }}</h3>
+                    <p class="ring-tag">{{ p.tagline }}</p>
+                    <div class="chips">
+                      @for (t of p.tech.slice(0, 4); track t) {
+                        <span>{{ t }}</span>
+                      }
+                    </div>
+                  </article>
                 }
-              </ul>
-              @if (p.images) {
-                <div class="project-screenshots">
-                  @for (img of p.images; track img.src) {
-                    <img [src]="img.src" [alt]="img.alt" loading="lazy" />
-                  }
-                </div>
-              }
-              @if (p.liveLink) {
-                <a class="project-link-cta live" [href]="p.liveLink" target="_blank" rel="noopener noreferrer">▶ Play live</a>
-              }
-              @if (p.link) {
-                <a class="project-link-cta" [href]="p.link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+              </div>
+            </div>
+
+            <div class="ring-dots">
+              @for (p of ring.items; track p.name; let i = $index) {
+                <button
+                  type="button"
+                  [class.on]="i === ring.active()"
+                  [attr.aria-label]="'Go to ' + p.name"
+                  (click)="goToProject(r, i)"
+                ></button>
               }
             </div>
-          }
+
+            @for (p of [ring.items[ring.active()]]; track p.name) {
+              <div class="ring-details">
+                <h3>{{ p.name }}</h3>
+                <ul>
+                  @for (b of p.bullets; track b) {
+                    <li [innerHTML]="b"></li>
+                  }
+                </ul>
+                @if (p.images) {
+                  <div class="project-screenshots">
+                    @for (img of p.images; track img.src) {
+                      <img [src]="img.src" [alt]="img.alt" loading="lazy" />
+                    }
+                  </div>
+                }
+                @if (p.liveLink) {
+                  <a class="project-link-cta live" [href]="p.liveLink" target="_blank" rel="noopener noreferrer">▶ Play live</a>
+                }
+                @if (p.link) {
+                  <a class="project-link-cta" [href]="p.link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+                }
+              </div>
+            }
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Fallback for phones / reduced motion -->
-    <div class="projects-fallback">
-      <h2>Projects</h2>
-      @for (p of projects; track p.name) {
-        <div class="project-card">
-          <h3>{{ p.name }}</h3>
-          <p>{{ p.tagline }}</p>
-          @if (p.images) {
-            <div class="project-screenshots">
-              @for (img of p.images; track img.src) {
-                <img [src]="img.src" [alt]="img.alt" loading="lazy" />
-              }
-            </div>
-          }
-          <ul>
-            @for (b of p.bullets; track b) {
-              <li [innerHTML]="b"></li>
+      <!-- Fallback for phones / reduced motion -->
+      <div class="projects-fallback">
+        <h2>{{ ring.title }}</h2>
+        @for (p of ring.items; track p.name) {
+          <div class="project-card">
+            <h3>{{ p.name }}</h3>
+            <p>{{ p.tagline }}</p>
+            @if (p.images) {
+              <div class="project-screenshots">
+                @for (img of p.images; track img.src) {
+                  <img [src]="img.src" [alt]="img.alt" loading="lazy" />
+                }
+              </div>
             }
-          </ul>
-          @if (p.liveLink) {
-            <a class="project-link-cta live" [href]="p.liveLink" target="_blank" rel="noopener noreferrer">▶ Play live</a>
-          }
-          @if (p.link) {
-            <a class="project-link-cta" [href]="p.link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
-          }
-        </div>
-      }
-    </div>
-  </section>
-
-  <!-- Personal projects -->
-  <section class="personal depth">
-    <h2>Personal Projects</h2>
-    @for (p of personalProjects; track p.name) {
-      <div class="project-card personal-card">
-        <h3>{{ p.name }}</h3>
-        <p class="ring-tag">{{ p.tagline }}</p>
-        <div class="chips">
-          @for (t of p.tech; track t) {
-            <span>{{ t }}</span>
-          }
-        </div>
-        <ul>
-          @for (b of p.bullets; track b) {
-            <li [innerHTML]="b"></li>
-          }
-        </ul>
-        @if (p.images) {
-          <div class="project-screenshots">
-            @for (img of p.images; track img.src) {
-              <img [src]="img.src" [alt]="img.alt" loading="lazy" />
+            <ul>
+              @for (b of p.bullets; track b) {
+                <li [innerHTML]="b"></li>
+              }
+            </ul>
+            @if (p.liveLink) {
+              <a class="project-link-cta live" [href]="p.liveLink" target="_blank" rel="noopener noreferrer">▶ Play live</a>
+            }
+            @if (p.link) {
+              <a class="project-link-cta" [href]="p.link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
             }
           </div>
         }
-        @if (p.liveLink) {
-          <a class="project-link-cta live" [href]="p.liveLink" target="_blank" rel="noopener noreferrer">▶ Play live</a>
-        }
-        @if (p.link) {
-          <a class="project-link-cta" [href]="p.link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
-        }
       </div>
-    }
-  </section>
+    </section>
+  }
 
   <!-- Education -->
   <section class="education depth">

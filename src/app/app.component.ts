@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, computed, inject, signal } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, WritableSignal, inject, signal } from '@angular/core';
 
 interface Project {
   name: string;
@@ -115,8 +115,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     { skills: this.skillRow2, loop: [...this.skillRow2, ...this.skillRow2], reverse: true }
   ];
 
-  readonly activeProject = signal(0);
-  readonly current = computed(() => [this.projects[this.activeProject()]]);
+  readonly rings = [
+    { title: 'Projects', items: this.projects, active: signal(0) },
+    { title: 'Personal Projects', items: this.personalProjects, active: signal(0) }
+  ];
 
   private readonly host = inject(ElementRef).nativeElement as HTMLElement;
   private readonly zone = inject(NgZone);
@@ -129,9 +131,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   private heroEl: HTMLElement | null = null;
   private progressEl: HTMLElement | null = null;
   private floorEl: HTMLElement | null = null;
-  private trackEl: HTMLElement | null = null;
   private depthEls: HTMLElement[] = [];
-  private ringCards: HTMLElement[] = [];
+  private ringEls: { track: HTMLElement; cards: HTMLElement[] }[] = [];
 
   ngAfterViewInit(): void {
     this.reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -141,9 +142,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     this.heroEl = q('.hero-section');
     this.progressEl = q('.scroll-progress span');
     this.floorEl = q('.grid-floor');
-    this.trackEl = q('.projects-track');
     this.depthEls = Array.from(this.host.querySelectorAll<HTMLElement>('.depth'));
-    this.ringCards = Array.from(this.host.querySelectorAll<HTMLElement>('.ring-card'));
+    this.ringEls = Array.from(this.host.querySelectorAll<HTMLElement>('.projects-track')).map(track => ({
+      track,
+      cards: Array.from(track.querySelectorAll<HTMLElement>('.ring-card'))
+    }));
 
     this.zone.runOutsideAngular(() => {
       window.addEventListener('scroll', this.requestUpdate, { passive: true });
@@ -163,12 +166,13 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     cancelAnimationFrame(this.rafId);
   }
 
-  goToProject(index: number): void {
-    const track = this.trackEl;
+  goToProject(ring: number, index: number): void {
+    const track = this.ringEls[ring]?.track;
     if (!track) return;
     const travel = track.offsetHeight - window.innerHeight;
     const top = track.getBoundingClientRect().top + window.scrollY;
-    const target = top + (index / (this.projects.length - 1)) * travel;
+    const steps = Math.max(this.rings[ring].items.length - 1, 1);
+    const target = top + (index / steps) * travel;
     window.scrollTo({ top: target, behavior: this.reduceMotion ? 'auto' : 'smooth' });
   }
 
@@ -216,19 +220,23 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       }
     }
 
-    this.updateRing(vh);
+    this.ringEls.forEach((el, i) => this.updateRing(el.track, el.cards, this.rings[i], vh));
   }
 
-  private updateRing(vh: number): void {
-    const track = this.trackEl;
-    if (!track || !track.offsetParent) return;
+  private updateRing(
+    track: HTMLElement,
+    cards: HTMLElement[],
+    ring: { items: Project[]; active: WritableSignal<number> },
+    vh: number
+  ): void {
+    if (!track.offsetParent) return;
 
     const r = track.getBoundingClientRect();
     const travel = r.height - vh;
     const progress = travel > 0 ? clamp(-r.top / travel, 0, 1) : 0;
-    const pos = progress * (this.projects.length - 1);
+    const pos = progress * (ring.items.length - 1);
 
-    this.ringCards.forEach((card, i) => {
+    cards.forEach((card, i) => {
       const d = i - pos;
       const ad = Math.abs(d);
       card.style.transform = `rotateY(${d * 55}deg) translateZ(380px)`;
@@ -237,8 +245,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     });
 
     const idx = Math.round(pos);
-    if (idx !== this.activeProject()) {
-      this.zone.run(() => this.activeProject.set(idx));
+    if (idx !== ring.active()) {
+      this.zone.run(() => ring.active.set(idx));
     }
   }
 
