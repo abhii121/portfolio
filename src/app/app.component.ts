@@ -51,7 +51,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         'Improved performance through <strong>component optimization</strong> & lazy loading strategies.',
         'Worked with backend + QA teams for end-to-end performance tuning.'
       ]
-    },
+    }
+  ];
+
+  readonly personalProjects: Project[] = [
     {
       name: 'Expense Tracker',
       glyph: 'ET',

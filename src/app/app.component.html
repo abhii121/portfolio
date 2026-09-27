@@ -187,6 +187,40 @@
     </div>
   </section>
 
+  <!-- Personal projects -->
+  <section class="personal depth">
+    <h2>Personal Projects</h2>
+    @for (p of personalProjects; track p.name) {
+      <div class="project-card personal-card">
+        <h3>{{ p.name }}</h3>
+        <p class="ring-tag">{{ p.tagline }}</p>
+        <div class="chips">
+          @for (t of p.tech; track t) {
+            <span>{{ t }}</span>
+          }
+        </div>
+        <ul>
+          @for (b of p.bullets; track b) {
+            <li [innerHTML]="b"></li>
+          }
+        </ul>
+        @if (p.images) {
+          <div class="project-screenshots">
+            @for (img of p.images; track img.src) {
+              <img [src]="img.src" [alt]="img.alt" loading="lazy" />
+            }
+          </div>
+        }
+        @if (p.liveLink) {
+          <a class="project-link-cta live" [href]="p.liveLink" target="_blank" rel="noopener noreferrer">▶ Play live</a>
+        }
+        @if (p.link) {
+          <a class="project-link-cta" [href]="p.link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+        }
+      </div>
+    }
+  </section>
+
   <!-- Education -->
   <section class="education depth">
     <h2>Education</h2>
