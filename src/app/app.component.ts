@@ -82,6 +82,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         'Keyboard, <strong>gamepad (with rumble)</strong> and touch controls, plus procedural <strong>Web Audio</strong> sound effects.',
         'Deployed on <strong>Netlify</strong>.'
       ],
+      images: [
+        { src: 'space-slipstream/menu.png', alt: 'Space Slipstream title screen with track and lap selection' },
+        { src: 'space-slipstream/race.png', alt: 'Space Slipstream race in progress through an asteroid field with HUD' },
+        { src: 'space-slipstream/planet.png', alt: 'Space Slipstream ship approaching a planet to slingshot for boost' }
+      ],
       link: 'https://github.com/abhii121/space-slipstream',
       liveLink: 'https://spaceslipstream.netlify.app'
     }
